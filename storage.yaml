@@ -1,0 +1,54 @@
+example.com:
+  hosts:
+    dns:
+      ip: 127.0.0.3
+      host-key: ERTYQWER==
+      groups: [ldap]
+      applications: [bind]
+    mysql-0:
+      ip: 127.0.0.1
+      host-key: ASDFQWER==
+      groups: [ldap]
+      applications: [mysql]
+    mysql-1:
+      ip: 127.0.0.2
+      host-key: ASDFHWER==
+      groups: [ldap]
+      applications: [mysql]
+  applications:
+    mysql:
+      enviroment-variables: 
+        - s3
+    bind:
+  enviroment-variables:
+    mysql-0:
+      CONTROLLER: true
+    mysql-1:
+      REPLICA: true
+    mysql:
+      FOO: BAR
+    bind:
+      FOO: BAR
+    s3:
+      key: ASDF
+      id: 1234
+      url: https://s3.aws.com
+  groups:
+    ldap:
+      guid: 1000
+    ui:
+      guid: 1001
+    management:
+      guid: 1002
+  users:
+    dbarney:
+      uid: 1000
+      home-dir: /home/dbarney
+      ssh-key: ASDFERGERGADSFGa==
+      password: mykey
+      groups: [ldap, ui]
+    test:
+      uid: 1001
+      home-dir: /home/test
+      ssh-key: WERTERTEWRGDf==
+      groups: [ui]

@@ -1,0 +1,4 @@
+name string
+GUID int
+UID int
+ssh_keys []string
